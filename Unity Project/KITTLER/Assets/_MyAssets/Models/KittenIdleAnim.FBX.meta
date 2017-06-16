@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: f5e7893302d5b5540941a53a6467c047
+timeCreated: 1497093417
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Base Human
+    100002: Base HumanAnkleBone001
+    100004: Base HumanAnkleBone001 1
+    100006: Base HumanAnkleBone001 2
+    100008: Base HumanAnkleBone001 3
+    100010: Base HumanLLeg1
+    100012: Base HumanLLeg1 1
+    100014: Base HumanLLeg2
+    100016: Base HumanLLeg2 1
+    100018: Base HumanLLegAnkle
+    100020: Base HumanLLegAnkle 1
+    100022: Base HumanLLegPlatform
+    100024: Base HumanLLegPlatform 1
+    100026: Base HumanPelvis001
+    100028: Base HumanPelvis001Bone001
+    100030: Base HumanPelvis001Bone001Bone001
+    100032: Base HumanPelvis001Bone001Bone001Bone001
+    100034: Base HumanPelvis001Bone001Bone001Bone002
+    100036: Base HumanRLeg1
+    100038: Base HumanRLeg1 1
+    100040: Base HumanRLeg2
+    100042: Base HumanRLeg2 1
+    100044: Base HumanRLegAnkle
+    100046: Base HumanRLegAnkle 1
+    100048: Base HumanRLegPlatform
+    100050: Base HumanRLegPlatform 1
+    100052: Base HumanSpine1
+    100054: Base HumanSpine2
+    100056: Base HumanSpine3
+    100058: Base HumanTail1
+    100060: Base HumanTail2
+    100062: Base HumanTail3
+    100064: Base HumanTail4
+    100066: Cat_
+    100068: CatRefrence2
+    100070: //RootNode
+    400000: Base Human
+    400002: Base HumanAnkleBone001
+    400004: Base HumanAnkleBone001 1
+    400006: Base HumanAnkleBone001 2
+    400008: Base HumanAnkleBone001 3
+    400010: Base HumanLLeg1
+    400012: Base HumanLLeg1 1
+    400014: Base HumanLLeg2
+    400016: Base HumanLLeg2 1
+    400018: Base HumanLLegAnkle
+    400020: Base HumanLLegAnkle 1
+    400022: Base HumanLLegPlatform
+    400024: Base HumanLLegPlatform 1
+    400026: Base HumanPelvis001
+    400028: Base HumanPelvis001Bone001
+    400030: Base HumanPelvis001Bone001Bone001
+    400032: Base HumanPelvis001Bone001Bone001Bone001
+    400034: Base HumanPelvis001Bone001Bone001Bone002
+    400036: Base HumanRLeg1
+    400038: Base HumanRLeg1 1
+    400040: Base HumanRLeg2
+    400042: Base HumanRLeg2 1
+    400044: Base HumanRLegAnkle
+    400046: Base HumanRLegAnkle 1
+    400048: Base HumanRLegPlatform
+    400050: Base HumanRLegPlatform 1
+    400052: Base HumanSpine1
+    400054: Base HumanSpine2
+    400056: Base HumanSpine3
+    400058: Base HumanTail1
+    400060: Base HumanTail2
+    400062: Base HumanTail3
+    400064: Base HumanTail4
+    400066: Cat_
+    400068: CatRefrence2
+    400070: //RootNode
+    4300000: CatRefrence2
+    7400000: Idle
+    9500000: //RootNode
+    13700000: CatRefrence2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base HumanLLegPlatform
+        weight: 1
+      - path: Base HumanLLegPlatform 1
+        weight: 1
+      - path: Base HumanRLegPlatform
+        weight: 1
+      - path: Base HumanRLegPlatform 1
+        weight: 1
+      - path: Cat_
+        weight: 1
+      - path: Cat_/Base HumanLLeg1
+        weight: 1
+      - path: Cat_/Base HumanLLeg1/Base HumanLLeg2
+        weight: 1
+      - path: Cat_/Base HumanLLeg1/Base HumanLLeg2/Base HumanLLegAnkle
+        weight: 1
+      - path: Cat_/Base HumanLLeg1/Base HumanLLeg2/Base HumanLLegAnkle/Base HumanAnkleBone001
+        weight: 1
+      - path: Cat_/Base HumanRLeg1
+        weight: 1
+      - path: Cat_/Base HumanRLeg1/Base HumanRLeg2
+        weight: 1
+      - path: Cat_/Base HumanRLeg1/Base HumanRLeg2/Base HumanRLegAnkle
+        weight: 1
+      - path: Cat_/Base HumanRLeg1/Base HumanRLeg2/Base HumanRLegAnkle/Base HumanAnkleBone001
+          1
+        weight: 1
+      - path: Cat_/Base HumanSpine1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanLLeg1 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanLLeg1 1/Base HumanLLeg2 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanLLeg1 1/Base HumanLLeg2 1/Base HumanLLegAnkle 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanLLeg1 1/Base HumanLLeg2 1/Base HumanLLegAnkle 1/Base HumanAnkleBone001
+          2
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanPelvis001Bone001
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanPelvis001Bone001/Base HumanPelvis001Bone001Bone001
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanPelvis001Bone001/Base HumanPelvis001Bone001Bone001/Base HumanPelvis001Bone001Bone001Bone001
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanPelvis001Bone001/Base HumanPelvis001Bone001Bone001/Base HumanPelvis001Bone001Bone001Bone002
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanRLeg1 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanRLeg1 1/Base HumanRLeg2 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanRLeg1 1/Base HumanRLeg2 1/Base HumanRLegAnkle 1
+        weight: 1
+      - path: Cat_/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base HumanPelvis001/Base
+          HumanRLeg1 1/Base HumanRLeg2 1/Base HumanRLegAnkle 1/Base HumanAnkleBone001
+          3
+        weight: 1
+      - path: Cat_/Base HumanTail1
+        weight: 1
+      - path: Cat_/Base HumanTail1/Base HumanTail2
+        weight: 1
+      - path: Cat_/Base HumanTail1/Base HumanTail2/Base HumanTail3
+        weight: 1
+      - path: Cat_/Base HumanTail1/Base HumanTail2/Base HumanTail3/Base HumanTail4
+        weight: 1
+      - path: CatRefrence2
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
