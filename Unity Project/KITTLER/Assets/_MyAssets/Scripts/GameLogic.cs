@@ -18,6 +18,25 @@ public class GameLogic : MonoBehaviour {
     public static bool plateHasFood = false;
     public static bool completed = false;
 
+
+    public GameObject eventSystem;
+    public GameObject[] puzzleSpheres; //An array to hold our puzzle spheres
+
+    public int puzzleLength = 5; //How many times we light up.  This is the difficulty factor.  The longer it is the more you have to memorize in-game.
+    public float puzzleSpeed = 1f; //How many seconds between puzzle display pulses
+    private int[] puzzleOrder; //For now let's have 5 orbs
+
+    private int currentDisplayIndex = 0; //Temporary variable for storing the index when displaying the pattern
+    public bool currentlyDisplayingPattern = true;
+    public bool playerWon = false;
+
+    private int currentSolveIndex = 0; //Temporary variable for storing the index that the player is solving for in the pattern.
+
+    public AudioClip buzz;
+    public AudioClip winSound;
+
+    int wonSecondTime = 0;
+
     void Start()
     {
         part1 = GameObject.Find("Part1").GetComponent<Text>();
@@ -25,6 +44,9 @@ public class GameLogic : MonoBehaviour {
 
         if (!part1 || !part2)
             Debug.LogError("WORDS NOT FOUND");
+
+        puzzleOrder = new int[puzzleLength]; //Set the size of our array to the declared puzzle length
+        generatePuzzleSequence(); //Generate the puzzle sequence for this playthrough.  
     }
 
     public void OnClickPlate()
@@ -62,14 +84,9 @@ public class GameLogic : MonoBehaviour {
 
     public void OnClickStartButton()
     {
-        //player.transform.position = wayPoints[1].position;
+       
         Doors[0].SetTrigger("openDoor");
-        //iTween.MoveTo(player.gameObject,
-        //    iTween.Hash(
-        //        "position", wayPoints[1].position,
-        //        "time",2,
-        //        "easetype","linear"
-        //        ));
+
         iTween.MoveTo(player.gameObject,
            iTween.Hash(
                "path", iTweenPath.GetPath("StartPath"),
@@ -77,7 +94,10 @@ public class GameLogic : MonoBehaviour {
                "easetype", "linear"
                ));
 
-
+        eventSystem.SetActive(false);
+        CancelInvoke("displayPattern");
+        InvokeRepeating("displayPattern", 3, puzzleSpeed); //Start running through the displaypattern function
+        currentSolveIndex = 0; //Set our puzzle index at 0
     }
 
     public void OnClickExitButton()
@@ -86,20 +106,17 @@ public class GameLogic : MonoBehaviour {
     }
 
     public void PuzzleWon()
-    {
-        //player.transform.position = wayPoints[2].position;
+    {      
+        player.gameObject.GetComponent<GvrAudioSource>().PlayOneShot(winSound);
         Doors[1].SetTrigger("openDoor");
-        //iTween.MoveTo(player.gameObject,
-        //    iTween.Hash(
-        //        "position", wayPoints[2].position,
-        //        "time", 2,
-        //        "easetype", "linear"
-        //        ));
+
         iTween.MoveTo(player.gameObject,
         iTween.Hash(
-       "path", iTweenPath.GetPath("WonPath"),
-       "time", 3,
-       "easetype", "linear"
+        "path", iTweenPath.GetPath("WonPath"),
+        "time", 3,
+        "easetype", "linear",
+        "oncomplete", "finishingFlourish",
+        "oncompletetarget", this.gameObject
        ));
     }
 
@@ -112,15 +129,22 @@ public class GameLogic : MonoBehaviour {
 
     public void OnClickRestartButton()
     {
-        //player.transform.position = wayPoints[0].position;
-        Doors[0].SetTrigger("closeDoor");
-        Doors[1].SetTrigger("closeDoor");
+        StartCoroutine(closeDoors());
         iTween.MoveTo(player.gameObject,
         iTween.Hash(
-         "path", iTweenPath.GetPath("RestartPath"),
-           "time", 5,
-           "easetype", "linear"
+        "path", iTweenPath.GetPath("RestartPath"),
+        "time", 5,
+        "easetype", "linear",
+        "oncomplete", "resetGame",
+        "oncompletetarget", this.gameObject
           ));
+    }
+
+    IEnumerator closeDoors()
+    {
+        Doors[1].SetTrigger("closeDoor");
+        yield return new WaitForSeconds(3f);
+        Doors[0].SetTrigger("closeDoor");
     }
 
     public void SelectFish()
@@ -153,4 +177,107 @@ public class GameLogic : MonoBehaviour {
             completed = false;
         }
     }
+
+    // Provided Functions
+    public void playerSelection(GameObject sphere)
+    {
+        if (playerWon != true)
+        { //If the player hasn't won yet
+            int selectedIndex = 0;
+            //Get the index of the selected object
+            for (int i = 0; i < puzzleSpheres.Length; i++)
+            { //Go through the puzzlespheres array
+                if (puzzleSpheres[i] == sphere)
+                { //If the object we have matches this index, we're good
+                    Debug.Log("Looks like we hit sphere: " + i);
+                    selectedIndex = i;
+                }
+            }
+            solutionCheck(selectedIndex);//Check if it's correct
+        }
+    }
+
+    public void solutionCheck(int playerSelectionIndex)
+    { //We check whether or not the passed index matches the solution index
+        if (playerSelectionIndex == puzzleOrder[currentSolveIndex])
+        { //Check if the index of the object the player passed is the same as the current solve index in our solution array
+            currentSolveIndex++;
+            Debug.Log("Correct!  You've solved " + currentSolveIndex + " out of " + puzzleLength);
+            if (currentSolveIndex >= puzzleLength)
+            {
+                PuzzleWon();
+            }
+        }
+        else
+        {
+            puzzleFailure();
+        }
+
+    }
+
+    void displayPattern()
+    { //Invoked repeating.
+        currentlyDisplayingPattern = true; //Let us know were displaying the pattern
+        eventSystem.SetActive(false); //Disable gaze input events while we are displaying the pattern.
+
+        if (currentlyDisplayingPattern == true)
+        { //If we are not finished displaying the pattern
+            if (currentDisplayIndex < puzzleOrder.Length)
+            { //If we haven't reached the end of the puzzle
+                Debug.Log(puzzleOrder[currentDisplayIndex] + " at index: " + currentDisplayIndex);
+                puzzleSpheres[puzzleOrder[currentDisplayIndex]].GetComponent<lightUp>().patternLightUp(puzzleSpeed); //Light up the sphere at the proper index.  For now we keep it lit up the same amount of time as our interval, but could adjust this to be less.
+                currentDisplayIndex++; //Move one further up.
+            }
+            else
+            {
+                Debug.Log("End of puzzle display");
+                currentlyDisplayingPattern = false; //Let us know were done displaying the pattern
+                currentDisplayIndex = 0;
+                CancelInvoke(); //Stop the pattern display.  May be better to use coroutines for this but oh well
+                eventSystem.SetActive(true); //Enable gaze input when we aren't displaying the pattern.
+            }
+        }
+    }
+
+    public void generatePuzzleSequence()
+    {
+        int tempReference;
+        for (int i = 0; i < puzzleLength; i++)
+        { //Do this as many times as necessary for puzzle length
+            tempReference = Random.Range(0, puzzleSpheres.Length); //Generate a random reference number for our puzzle spheres
+            puzzleOrder[i] = tempReference; //Set the current index to our randomly generated reference number
+        }
+    }
+
+    public void puzzleFailure()
+    { //Do this when the player gets it wrong
+        player.gameObject.GetComponent<GvrAudioSource>().PlayOneShot(buzz);
+
+        currentSolveIndex = 0;
+
+        eventSystem.SetActive(false);
+        CancelInvoke("displayPattern");
+        InvokeRepeating("displayPattern", 3, puzzleSpeed); //Start running through the displaypattern function
+        currentSolveIndex = 0; //Set our puzzle index at 0
+    }
+
+    public void finishingFlourish()
+    { //A nice visual flourish when the player wins     
+        playerWon = true;
+    }
+
+    public void resetGame()
+    {
+        wonSecondTime++;
+        if (wonSecondTime == 2)
+        {
+            wonSecondTime = 0;
+            puzzleLength++;
+        }
+        puzzleOrder = new int[puzzleLength]; //Set the size of our array to the declared puzzle length
+        playerWon = false;
+        generatePuzzleSequence(); //Generate the puzzle sequence for this playthrough.  
+    }
+
+
 }
