@@ -1,0 +1,124 @@
+Initialize engine version: 5.6.0f3 (497a0f351392)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 745 (ID=0x1382)
+    Vendor:   NVIDIA
+    VRAM:     4062 MB
+    Driver:   21.21.13.7595
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Google.ProtocolBuffers.dll (this message is harmless)
+Loading C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\Google.ProtocolBuffers.dll into Unity Child Domain
+- Completed reload, in  0.018 seconds
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\vedio_000\Documents\Github\Kittler-Puzzler-VR-Udacity-Nanodegree\Unity Project\KITTLER\Build\Kittler\Kittler_Data\Managed\System.dll (this message is harmless)
+desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.044070 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1d24 -> priority: 1 
+  Thread -> id: 530 -> priority: 1 
+NullReferenceException: Object reference not set to an instance of an object
+  at GvrPointerInputModuleImpl.HandlePendingClick () [0x00000] in <filename unknown>:0 
+  at GvrPointerInputModuleImpl.Process () [0x00000] in <filename unknown>:0 
+  at GvrPointerInputModule.Process () [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.EventSystem.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+1 at index: 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+4 at index: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+4 at index: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+End of puzzle display
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Correct!  You've solved 1 out of 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GvrPointerInputModuleImpl.HandlePendingClick () [0x00000] in <filename unknown>:0 
+  at GvrPointerInputModuleImpl.Process () [0x00000] in <filename unknown>:0 
+  at GvrPointerInputModule.Process () [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.EventSystem.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+1 at index: 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+4 at index: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+4 at index: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+End of puzzle display
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Correct!  You've solved 1 out of 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Correct!  You've solved 2 out of 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Looks like we hit sphere: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Correct!  You've solved 3 out of 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+EATING NOW FALSE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

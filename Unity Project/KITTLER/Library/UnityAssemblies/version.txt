@@ -1,5 +1,5 @@
 5.6.0f3:2.1.0.0
-Android
+StandaloneWindows64
 C:/Program Files/Unity5.6/Editor/Data/Managed/UnityEngine.dll
 C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 C:/Program Files/Unity5.6/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll

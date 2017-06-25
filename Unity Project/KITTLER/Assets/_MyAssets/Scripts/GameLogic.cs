@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour {
 
+    static string levelKey = "LevelNumber";
+    static string difficultyKey = "CurrentPuzzleLength";
+    static string wonSecondTimeKey = "wonSecondTime";
+
+
+
     public Transform player;
     public Animator[] Doors;
 
@@ -35,10 +41,25 @@ public class GameLogic : MonoBehaviour {
     public AudioClip buzz;
     public AudioClip winSound;
 
+    GvrAudioSource audioSrc;
+    public Material[] colors;
+    public MeshRenderer ren;
+
+
     int wonSecondTime = 0;
+    int currentLevel = 1;
+    public Text textLevel;
 
     void Start()
     {
+        int temp = GetSavedData(levelKey);
+        currentLevel = (temp == 0) ? 1 : temp;
+        temp = GetSavedData(difficultyKey);
+        puzzleLength = (temp == 0) ? 3 : temp;
+        wonSecondTime = GetSavedData(wonSecondTimeKey);        
+
+        audioSrc = player.gameObject.GetComponent<GvrAudioSource>();
+
         part1 = GameObject.Find("Part1").GetComponent<Text>();
         part2 = GameObject.Find("Part2").GetComponent<Text>();
 
@@ -84,7 +105,8 @@ public class GameLogic : MonoBehaviour {
 
     public void OnClickStartButton()
     {
-       
+        SetLightToRed();
+        textLevel.text = currentLevel.ToString();
         Doors[0].SetTrigger("openDoor");
 
         iTween.MoveTo(player.gameObject,
@@ -106,8 +128,11 @@ public class GameLogic : MonoBehaviour {
     }
 
     public void PuzzleWon()
-    {      
-        player.gameObject.GetComponent<GvrAudioSource>().PlayOneShot(winSound);
+    {
+        SetLightToGreen();
+        currentLevel++;
+        SavePref(levelKey, currentLevel);
+        audioSrc.PlayOneShot(winSound);
         Doors[1].SetTrigger("openDoor");
 
         iTween.MoveTo(player.gameObject,
@@ -199,6 +224,7 @@ public class GameLogic : MonoBehaviour {
 
     public void solutionCheck(int playerSelectionIndex)
     { //We check whether or not the passed index matches the solution index
+        SetLightToYellow();
         if (playerSelectionIndex == puzzleOrder[currentSolveIndex])
         { //Check if the index of the object the player passed is the same as the current solve index in our solution array
             currentSolveIndex++;
@@ -251,7 +277,8 @@ public class GameLogic : MonoBehaviour {
 
     public void puzzleFailure()
     { //Do this when the player gets it wrong
-        player.gameObject.GetComponent<GvrAudioSource>().PlayOneShot(buzz);
+        SetLightToRed();
+        audioSrc.PlayOneShot(buzz);
 
         currentSolveIndex = 0;
 
@@ -273,11 +300,68 @@ public class GameLogic : MonoBehaviour {
         {
             wonSecondTime = 0;
             puzzleLength++;
+            SavePref(difficultyKey, puzzleLength);
         }
+        SavePref(wonSecondTimeKey, wonSecondTime);
         puzzleOrder = new int[puzzleLength]; //Set the size of our array to the declared puzzle length
         playerWon = false;
         generatePuzzleSequence(); //Generate the puzzle sequence for this playthrough.  
     }
 
+    public void Play(AudioClip cp)
+    {
+        audioSrc.PlayOneShot(cp);
+    }
+
+    void SetLightToGreen()
+    {
+        ren.material = colors[0];
+    }
+
+    void SetLightToRed()
+    {
+        ren.material = colors[1];
+    }
+
+    void SetLightToYellow()
+    {
+        ren.material = colors[2];
+    }
+
+    void SavePref(string key, int value)
+    {
+        PlayerPrefs.SetInt(key, value);
+        PlayerPrefs.Save();
+    }
+
+    int GetSavedData(string key)
+    {
+        if (PlayerPrefs.HasKey(key))
+        {
+            return PlayerPrefs.GetInt(key);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(key, 0);
+            PlayerPrefs.Save();
+            return 0;
+        }     
+    }
+
+    public void ResetAllData()
+    {
+        //difficultyKey
+        //wonSecondTimeKey
+        SavePref(levelKey, 1);
+        SavePref(difficultyKey, 3);
+        SavePref(wonSecondTimeKey, 0);
+
+        currentLevel = 1;
+        puzzleLength = 3;
+        wonSecondTime = 0;
+        puzzleOrder = new int[puzzleLength]; //Set the size of our array to the declared puzzle length
+        generatePuzzleSequence(); //Generate the puzzle sequence for this playthrough.  
+
+    }
 
 }

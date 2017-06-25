@@ -51,18 +51,20 @@ public class GvrEditorEmulator : MonoBehaviour {
     {
       m_camera = Camera.main;
     }
-  }
 
-  void Update()
-  {
-    if (GvrController.Recentered)
-    {
-      Recenter();
+     Cursor.lockState = CursorLockMode.Locked;
     }
+
+    void Update()
+  {
+    //if (GvrController.Recentered)
+    //{
+    //  Recenter();
+    //}
 
     Quaternion rot;
     bool rolled = false;
-    if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) {
+    //if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) {
       m_mouseX += Input.GetAxis(AXIS_MOUSE_X) * 5;
       if (m_mouseX <= -180) {
         m_mouseX += 360;
@@ -71,7 +73,8 @@ public class GvrEditorEmulator : MonoBehaviour {
       }
       m_mouseY -= Input.GetAxis(AXIS_MOUSE_Y) * 2.4f;
       m_mouseY = Mathf.Clamp(m_mouseY, -85, 85);
-    } else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
+    //} else 
+    if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
       rolled = true;
       m_mouseZ += Input.GetAxis(AXIS_MOUSE_X) * 5;
       m_mouseZ = Mathf.Clamp(m_mouseZ, -85, 85);
@@ -88,7 +91,7 @@ public class GvrEditorEmulator : MonoBehaviour {
     m_camera.transform.localPosition = neck;
     m_camera.transform.localRotation = rot;
   }
-#endif  // UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+#endif   //UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
 
   public void Recenter()
   {
@@ -100,6 +103,6 @@ public class GvrEditorEmulator : MonoBehaviour {
     m_mouseX = m_mouseZ = 0;  // Do not reset pitch, which is how it works on the phone.
     m_camera.transform.localPosition = Vector3.zero;
     m_camera.transform.localRotation = new Quaternion(m_mouseX, m_mouseY, m_mouseZ, 1);
-#endif  // UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+#endif   //UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
   }
 }
